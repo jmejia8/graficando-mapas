@@ -1,11 +1,12 @@
+include("src/pkg.jl")
 using StatsPlots, GeoJSON, DataFrames
-include("choropleth.jl")
+include("src/choropleth.jl")
 
 
 
 function main()
     @info "Iniciando..."
-    archivo_json = "veracruz.json"
+    archivo_json = "data/veracruz.json"
 
     # lectura de archivo json
     json = GeoJSON.read(read(archivo_json))
@@ -21,7 +22,7 @@ function main()
     # genera gráfico
     p = choropleth(df, :geometry, by = :Area, fill = colores, axis=false)
     # guarda gráfico
-    savefig(p, "mapa_"*archivo_json*".pdf")
+    savefig(p, "mapa.pdf")
     p
 end
 

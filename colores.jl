@@ -1,7 +1,8 @@
+include("src/pkg.jl")
 using StatsPlots, Shapefile
 
 function main()
-    shp = Shapefile.shapes(Shapefile.Table("mexico_estados.shp"))
+    shp = Shapefile.shapes(Shapefile.Table("data/mexico_estados.shp"))
 
     p = plot(title = "México")
 
